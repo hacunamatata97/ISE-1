@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_latest"
+        android:title="@string/action_latest"/>
+
+    <item
+        android:id="@+id/action_on_going"
+        android:title="@string/action_on_going"/>
+
+    <item
+        android:id="@+id/action_finished"
+        android:title="@string/action_finished"/>
+
+</menu>

@@ -5,4 +5,9 @@
     <string name="text_password">Password</string>
     <string name="button_sign_in">Sign in</string>
     <string name="text_divider">OR</string>
+    <string name="sample_title">Opportunity to protect graduation projects in Australia for FPT University students</string>
+    <string name="sample_major">Software Engineering</string>
+    <string name="action_latest">Latest</string>
+    <string name="action_on_going">On Going</string>
+    <string name="action_finished">Finished</string>
 </resources>
