@@ -10,4 +10,6 @@
     <string name="action_latest">Latest</string>
     <string name="action_on_going">On Going</string>
     <string name="action_finished">Finished</string>
+    <string name="action_voice">voice</string>
+    <string name="hint_search">Input course name to search…</string>
 </resources>
