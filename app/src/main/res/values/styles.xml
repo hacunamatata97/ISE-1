@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="EmptyCourseText">
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:fontFamily">@font/omniblack_outline_demo</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
 </resources>

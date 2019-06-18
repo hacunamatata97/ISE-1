@@ -8,4 +8,6 @@
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_18">18dp</dimen>
     <dimen name="dp_2">2dp</dimen>
+
+    <dimen name="sp_15">15sp</dimen>
 </resources>
