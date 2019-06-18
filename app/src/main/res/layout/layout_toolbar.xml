@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sun.ise.ui.common.CollapsibleConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:minHeight="?attr/actionBarSize"
+    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
+
+    <ImageView
+        android:id="@+id/imageCover"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_cover_template"
+        app:layout_constraintBottom_toTopOf="@id/viewBlank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"/>
+
+    <View
+        android:id="@+id/viewBlank"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageCover"/>
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="@dimen/dp_128"
+        android:layout_height="@dimen/dp_128"
+        android:src="@drawable/image_avatar_template"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"/>
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/buttonChooseAvatar"
+        android:layout_width="@dimen/dp_35"
+        android:layout_height="@dimen/dp_35"
+        android:src="@drawable/image_choose_photo"
+        app:layout_constraintCircle="@id/imageAvatar"
+        app:layout_constraintCircleAngle="135"
+        app:layout_constraintCircleRadius="@dimen/dp_70"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:gravity="center"
+        android:text="@string/template_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/sp_25"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageAvatar"
+        tools:layout_editor_absoluteX="@dimen/dp_8"/>
+</com.sun.ise.ui.common.CollapsibleConstraintLayout>
