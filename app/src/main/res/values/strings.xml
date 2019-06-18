@@ -7,9 +7,11 @@
     <string name="text_divider">OR</string>
     <string name="sample_title">Opportunity to protect graduation projects in Australia for FPT University students</string>
     <string name="sample_major">Software Engineering</string>
+    <string name="toolbar_enrolled">Enrolled courses</string>
     <string name="action_latest">Latest</string>
     <string name="action_on_going">On Going</string>
     <string name="action_finished">Finished</string>
     <string name="action_voice">voice</string>
     <string name="hint_search">Input course name to search…</string>
+    <string name="text_empty_courses">You haven\'t enrolled any courses!</string>
 </resources>
