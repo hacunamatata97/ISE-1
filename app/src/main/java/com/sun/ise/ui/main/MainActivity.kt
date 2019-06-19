@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.viewpager.widget.ViewPager
 import com.sun.ise.R
+import com.sun.ise.ui.common.ViewPagerAdapter
 import com.sun.ise.ui.main.home.HomeFragment
 import com.sun.ise.ui.main.mycourse.MyCourseFragment
 import com.sun.ise.ui.main.profile.ProfileFragment
@@ -69,5 +70,4 @@ class MainActivity : AppCompatActivity() {
         )
         viewPager.adapter = viewPagerAdapter
     }
-
 }
