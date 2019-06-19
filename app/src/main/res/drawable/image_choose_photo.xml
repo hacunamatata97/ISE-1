@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+
+            <solid android:color="@color/color_dark_gray"/>
+
+            <size
+                android:width="@dimen/dp_200"
+                android:height="@dimen/dp_200"/>
+
+            <stroke
+                android:width="@dimen/dp_4"
+                android:color="@android:color/white"/>
+        </shape>
+    </item>
+    <item
+        android:bottom="@dimen/dp_50"
+        android:drawable="@drawable/ic_camera"
+        android:end="@dimen/dp_50"
+        android:start="@dimen/dp_50"
+        android:top="@dimen/dp_50"/>
+</layer-list>
