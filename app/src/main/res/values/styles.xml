@@ -14,4 +14,28 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="ProfileStyle">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="ProfileDrawableText" parent="ProfileStyle">
+        <item name="android:textSize">@dimen/sp_25</item>
+        <item name="android:layout_marginTop">@dimen/dp_16</item>
+    </style>
+
+    <style name="ProfileHeader" parent="ProfileStyle">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:layout_margin">@dimen/dp_8</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="ProfileContent" parent="ProfileStyle">
+        <item name="android:textSize">@dimen/sp_25</item>
+        <item name="android:layout_marginTop">@dimen/dp_35</item>
+        <item name="android:layout_marginStart">@dimen/dp_8</item>
+        <item name="android:layout_marginEnd">@dimen/dp_8</item>
+        <item name="android:padding">@dimen/dp_8</item>
+    </style>
+
 </resources>

@@ -1,18 +1,26 @@
 <resources>
     <string name="app_name">ISE</string>
     <string name="btn_login_with_google">Login with google</string>
-    <string name="text_email">Email</string>
-    <string name="text_password">Password</string>
     <string name="button_sign_in">Sign in</string>
-    <string name="text_divider">OR</string>
-    <string name="sample_title">Opportunity to protect graduation projects in Australia for FPT University students</string>
-    <string name="sample_major">Software Engineering</string>
+
+
     <string name="toolbar_enrolled">Enrolled courses</string>
     <string name="action_latest">Latest</string>
     <string name="action_on_going">On Going</string>
     <string name="action_finished">Finished</string>
     <string name="action_voice">voice</string>
     <string name="hint_search">Input course name to search…</string>
+
+    <string name="text_divider">OR</string>
     <string name="text_empty_courses">You haven\'t enrolled any courses!</string>
-    <string name="template_name">Bùi Văn Phú</string>
+    <string name="text_date_of_birth">Date of birth</string>
+    <string name="text_major">Major</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_email">Email</string>
+    <string name="text_phone">Phone</string>
+    <string name="text_password">Password</string>
+
+    <string name="sample_name">Bùi Văn Phú</string>
+    <string name="sample_title">Opportunity to protect graduation projects in Australia for FPT University students</string>
+    <string name="sample_major">Software Engineering</string>
 </resources>

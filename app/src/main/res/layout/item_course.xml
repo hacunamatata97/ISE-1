@@ -68,7 +68,7 @@
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_major"
+                android:drawableStart="@drawable/ic_roll_number"
                 android:padding="@dimen/dp_8"
                 android:text="@string/sample_major"
                 android:textAlignment="center"

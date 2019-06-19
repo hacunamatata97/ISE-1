@@ -11,7 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <include layout="@layout/layout_toolbar"/>
 
@@ -22,11 +22,155 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:text="@string/sample_title"/>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textAccountType"
+                style="@style/ProfileDrawableText"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_account_type"
+                app:layout_constraintBaseline_toBaselineOf="@id/textRollNumber"
+                app:layout_constraintBottom_toTopOf="@id/textMajor"
+                app:layout_constraintEnd_toStartOf="@id/textRollNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread"/>
+
+            <TextView
+                android:id="@+id/textRollNumber"
+                style="@style/ProfileDrawableText"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_roll_number"
+                app:layout_constraintBaseline_toBaselineOf="@id/textAccountType"
+                app:layout_constraintBottom_toTopOf="@id/textMajor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textAccountType"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/textMajor"
+                style="@style/ProfileContent"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_border"
+                app:layout_constraintBottom_toTopOf="@id/textDateOfBirth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textRollNumber"/>
+
+            <TextView
+                android:id="@+id/textHeaderMajor"
+                style="@style/ProfileHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_background"
+                android:text="@string/text_major"
+                app:layout_constraintCircle="@id/textMajor"
+                app:layout_constraintCircleAngle="282"
+                app:layout_constraintCircleRadius="@dimen/dp_128"
+                app:layout_constraintStart_toStartOf="@id/textMajor"
+                app:layout_constraintTop_toTopOf="@id/textMajor"/>
+
+            <TextView
+                android:id="@+id/textDateOfBirth"
+                style="@style/ProfileContent"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_border"
+                app:layout_constraintBottom_toTopOf="@id/textGender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textMajor"/>
+
+            <TextView
+                android:id="@+id/textHeaderDob"
+                style="@style/ProfileHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_background"
+                android:text="@string/text_date_of_birth"
+                app:layout_constraintCircle="@id/textDateOfBirth"
+                app:layout_constraintCircleAngle="285"
+                app:layout_constraintCircleRadius="110dp"
+                app:layout_constraintStart_toStartOf="@id/textDateOfBirth"
+                app:layout_constraintTop_toTopOf="@id/textDateOfBirth"/>
+
+            <TextView
+                android:id="@+id/textGender"
+                style="@style/ProfileContent"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_border"
+                app:layout_constraintBottom_toTopOf="@id/textEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDateOfBirth"/>
+
+            <TextView
+                android:id="@+id/textHeaderGender"
+                style="@style/ProfileHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_background"
+                android:text="@string/text_gender"
+                app:layout_constraintCircle="@id/textGender"
+                app:layout_constraintCircleAngle="282"
+                app:layout_constraintCircleRadius="@dimen/dp_128"
+                app:layout_constraintStart_toStartOf="@id/textGender"
+                app:layout_constraintTop_toTopOf="@id/textGender"/>
+
+            <TextView
+                android:id="@+id/textEmail"
+                style="@style/ProfileContent"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_border"
+                app:layout_constraintBottom_toTopOf="@id/textPhone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textGender"/>
+
+            <TextView
+                android:id="@+id/textHeaderEmail"
+                style="@style/ProfileHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_background"
+                android:text="@string/text_email"
+                app:layout_constraintCircle="@id/textEmail"
+                app:layout_constraintCircleAngle="282"
+                app:layout_constraintCircleRadius="@dimen/dp_128"
+                app:layout_constraintStart_toStartOf="@id/textEmail"
+                app:layout_constraintTop_toTopOf="@id/textEmail"/>
+
+            <TextView
+                android:id="@+id/textPhone"
+                style="@style/ProfileContent"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textEmail"/>
+
+            <TextView
+                android:id="@+id/textHeaderPhone"
+                style="@style/ProfileHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/color_default_background"
+                android:text="@string/text_phone"
+                app:layout_constraintCircle="@id/textPhone"
+                app:layout_constraintCircleAngle="282"
+                app:layout_constraintCircleRadius="@dimen/dp_128"
+                app:layout_constraintStart_toStartOf="@id/textPhone"
+                app:layout_constraintTop_toTopOf="@id/textPhone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
