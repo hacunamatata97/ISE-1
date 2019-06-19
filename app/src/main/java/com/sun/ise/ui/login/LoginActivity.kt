@@ -1,7 +1,7 @@
 package com.sun.ise.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.sun.ise.R
 
 class LoginActivity : AppCompatActivity() {
