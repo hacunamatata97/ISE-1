@@ -7,13 +7,16 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.AlphaAnimation
+import android.view.animation.AnimationSet
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.appbar.AppBarLayout
 import com.sun.ise.R
-import kotlinx.android.synthetic.main.layout_closed_toolbar.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.view.*
 import kotlinx.android.synthetic.main.layout_toolbar.view.textName
 
@@ -38,6 +41,7 @@ class CollapsibleConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChang
     private var mIcon: ImageView? = null
     private var mTranslationTitle: AnimationHelper? = null
     private var mTranslationIcon: AnimationHelper? = null
+    private var mTranslationChooseAvatar: AnimationHelper? = null
     private var showImageAnimator: Animator? = null
     private var hideImageAnimator: Animator? = null
 
@@ -92,19 +96,20 @@ class CollapsibleConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChang
         if (mIcon != null && mTranslationIcon == null) {
             mTranslationIcon = AnimationHelper(mIcon!!)
         }
-        mTranslationTitle?.evaluate()
-        mTranslationIcon?.evaluate()
+        if (buttonChooseAvatar != null && mTranslationChooseAvatar == null) {
+            mTranslationChooseAvatar = AnimationHelper(buttonChooseAvatar)
+        }
+        mTranslationTitle?.float()
+        mTranslationIcon?.float()
     }
 
     private fun toggleViews(isOpen: Boolean) {
-        if(isOpen) {
+        if (isOpen) {
             viewBlank.visibility = View.GONE
-            buttonChooseAvatar.visibility = View.GONE
-            textName.setTextColor(Color.WHITE)
+            mTranslationChooseAvatar?.fadeOut()
         } else {
             viewBlank.visibility = View.VISIBLE
-            buttonChooseAvatar.visibility = View.VISIBLE
-            textName.setTextColor(Color.BLACK)
+            mTranslationChooseAvatar?.fadeIn()
         }
     }
 
@@ -116,7 +121,7 @@ class CollapsibleConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChang
             initialValue = target.left
         }
 
-        fun evaluate() {
+        fun float() {
             if (initialValue != target.left) {
                 val delta = (initialValue - target.left).toFloat()
                 val anim = ObjectAnimator.ofFloat(target, "translationX", delta, 0f)
@@ -124,6 +129,27 @@ class CollapsibleConstraintLayout : ConstraintLayout, AppBarLayout.OnOffsetChang
                 anim.start()
                 initialValue = target.left
             }
+        }
+
+        fun fadeIn() {
+            val fadeIn = AlphaAnimation(0f, 1f)
+            fadeIn.interpolator = DecelerateInterpolator()
+            fadeIn.duration = 1000
+
+            val animation = AnimationSet(false)
+            animation.addAnimation(fadeIn)
+            target.animation = animation
+        }
+
+        fun fadeOut() {
+            val fadeOut = AlphaAnimation(1f, 0f)
+            fadeOut.interpolator = AccelerateInterpolator()
+            fadeOut.startOffset = 1000
+            fadeOut.duration = 1000
+
+            val animation = AnimationSet(false)
+            animation.addAnimation(fadeOut)
+            target.animation = animation
         }
     }
 }
