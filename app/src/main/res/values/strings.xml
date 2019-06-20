@@ -3,7 +3,6 @@
     <string name="btn_login_with_google">Login with google</string>
     <string name="button_sign_in">Sign in</string>
 
-
     <string name="toolbar_enrolled">Enrolled courses</string>
     <string name="action_latest">Latest</string>
     <string name="action_on_going">On Going</string>
@@ -23,4 +22,8 @@
     <string name="sample_name">Bùi Văn Phú</string>
     <string name="sample_title">Opportunity to protect graduation projects in Australia for FPT University students</string>
     <string name="sample_major">Software Engineering</string>
+    <string name="action_home">Home</string>
+    <string name="action_search">Search</string>
+    <string name="action_my_courses">My Courses</string>
+    <string name="action_profile">Profile</string>
 </resources>
