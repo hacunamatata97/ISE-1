@@ -1,4 +1,4 @@
-package com.sun.ise.ui.main
+package com.sun.ise.ui.common
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
