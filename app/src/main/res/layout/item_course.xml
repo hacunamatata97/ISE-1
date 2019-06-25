@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_8"
+    app:cardCornerRadius="@dimen/dp_10"
     app:cardElevation="@dimen/dp_2"
     app:cardUseCompatPadding="true">
 
@@ -23,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/sample_thumbnail"/>
+            android:src="@drawable/sample_thumbnail"/>
 
         <TextView
             android:id="@+id/textCourseTitle"
@@ -56,6 +57,7 @@
                 android:drawableStart="@drawable/ic_date"
                 android:padding="@dimen/dp_8"
                 android:textAlignment="center"
+                android:textSize="@dimen/sp_13"
                 android:textColor="?android:textColorSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textCourseMajor"

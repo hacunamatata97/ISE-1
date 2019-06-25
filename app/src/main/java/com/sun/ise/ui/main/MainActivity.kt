@@ -1,5 +1,7 @@
 package com.sun.ise.ui.main
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -69,5 +71,9 @@ class MainActivity : AppCompatActivity() {
             ProfileFragment()
         )
         viewPager.adapter = viewPagerAdapter
+    }
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 }
