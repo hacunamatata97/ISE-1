@@ -10,7 +10,5 @@ object RetrofitService {
         Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    fun <T> createService(serviceClass: Class<T>): T {
-        return retrofit.create(serviceClass)
-    }
+    fun getService(): IseService = retrofit.create(IseService::class.java)
 }

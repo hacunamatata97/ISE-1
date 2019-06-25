@@ -9,6 +9,8 @@ class UserRepository(
     private val remoteDataSource: UserDataSource.Remote
 ) : UserDataSource.Local, UserDataSource.Remote {
 
+    override fun getToken(): String = localDataSource.getToken()
+
     override fun saveToken(token: String) {
         localDataSource.saveToken(token)
     }

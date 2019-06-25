@@ -1,5 +1,6 @@
 package com.sun.ise.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,7 @@ import com.sun.ise.R
 import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.remote.RemoteDataSource
 import com.sun.ise.data.remote.RetrofitService
-import com.sun.ise.data.api.UserApi
+import com.sun.ise.data.remote.IseService
 import com.sun.ise.data.repository.UserRepository
 import com.sun.ise.ui.main.MainActivity
 import com.sun.ise.util.*
@@ -16,9 +17,8 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private val TAG = LoginActivity::class.java.simpleName
     private val retrofit by lazy {
-        RetrofitService.createService(UserApi::class.java)
+        RetrofitService.getService()
     }
     private val loginViewModel: LoginViewModel by lazy {
         ViewModelProviders.of(
@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
             ViewModelUtil.viewModelFactory {
                 LoginViewModel(
                     UserRepository(
-                        LocalDataSource(this),
+                        LocalDataSource.getInstance(application),
                         RemoteDataSource(retrofit)
                     )
                 )
@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val prefs = SharePrefs(this)
+        val prefs = SharePrefs(application)
         val token = prefs.token
         if (!token.isNullOrBlank()) {
             startActivity(Intent(this, MainActivity::class.java))

@@ -1,19 +1,40 @@
 package com.sun.ise.ui.main.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sun.ise.R
+import com.sun.ise.data.remote.IseService
+import com.sun.ise.data.local.LocalDataSource
+import com.sun.ise.data.remote.EventRemoteDataSource
+import com.sun.ise.data.remote.RetrofitService
+import com.sun.ise.data.repository.EventRepository
 import com.sun.ise.ui.base.BaseFragment
+import com.sun.ise.util.ViewModelUtil
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
 
-    private lateinit var viewModel: HomeViewModel
+    private val iseService: IseService by lazy {
+        RetrofitService.getService()
+    }
+    private val viewModel: HomeViewModel by lazy {
+        ViewModelProviders.of(this, ViewModelUtil.viewModelFactory {
+            HomeViewModel(
+                EventRepository(
+                    LocalDataSource.getInstance(activity!!.application),
+                    EventRemoteDataSource(iseService)
+                )
+            )
+        }).get(HomeViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +45,6 @@ class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
