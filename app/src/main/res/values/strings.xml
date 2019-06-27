@@ -27,4 +27,8 @@
     <string name="action_my_courses">My Courses</string>
     <string name="action_profile">Profile</string>
     <string name="button_enroll">Enroll</string>
+
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_unknown">Unknown</string>
 </resources>

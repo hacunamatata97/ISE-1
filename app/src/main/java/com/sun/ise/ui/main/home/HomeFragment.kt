@@ -1,7 +1,6 @@
 package com.sun.ise.ui.main.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sun.ise.R
-import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.remote.EventRemoteDataSource
 import com.sun.ise.data.remote.IseService
 import com.sun.ise.data.remote.RetrofitService
@@ -30,7 +28,6 @@ class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
         ViewModelProviders.of(this, ViewModelUtil.viewModelFactory {
             HomeViewModel(
                 EventRepository(
-                    LocalDataSource.getInstance(activity!!.application),
                     EventRemoteDataSource(iseService)
                 )
             )

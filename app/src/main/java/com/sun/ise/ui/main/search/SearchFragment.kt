@@ -1,14 +1,12 @@
 package com.sun.ise.ui.main.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.sun.ise.R
-import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.model.EventSuggestion
 import com.sun.ise.data.remote.EventRemoteDataSource
 import com.sun.ise.data.remote.IseService
@@ -29,7 +27,6 @@ class SearchFragment : Fragment(), MakeSuggestion {
             SearchViewModel(
                 this,
                 EventRepository(
-                    LocalDataSource.getInstance(activity!!.application),
                     EventRemoteDataSource(iseService)
                 )
             )

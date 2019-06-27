@@ -1,3 +1,12 @@
 package com.sun.ise.data.model
 
-class LoginResult(val code: String, val token: String)
+import com.google.gson.annotations.SerializedName
+
+data class LoginResult(
+    @SerializedName("code")
+    val code: String,
+    @SerializedName("token")
+    val token: String,
+    @SerializedName("user")
+    val user: User
+)
