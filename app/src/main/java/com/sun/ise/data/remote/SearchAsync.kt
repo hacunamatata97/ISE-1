@@ -1,6 +1,10 @@
 package com.sun.ise.data.remote
 
 import android.os.AsyncTask
+<<<<<<< 26fd7885f86881138e373fc8fb91e53a183cbf43
+=======
+import android.util.Log
+>>>>>>> Refs #13300 Handle search item click
 import com.sun.ise.data.model.Event
 import com.sun.ise.data.model.EventSuggestion
 import com.sun.ise.data.repository.EventRepository
