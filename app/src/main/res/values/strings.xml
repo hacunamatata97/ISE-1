@@ -31,4 +31,9 @@
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
     <string name="gender_unknown">Unknown</string>
+    <string name="button_logout">Logout</string>
+    <string name="toast_server_error">Something is wrong, please try again!</string>
+    <string name="toast_login_failed">Wrong email or password!</string>
+    <string name="toast_empty_email">Please enter email!</string>
+    <string name="toast_empty_password">Please enter password!</string>
 </resources>

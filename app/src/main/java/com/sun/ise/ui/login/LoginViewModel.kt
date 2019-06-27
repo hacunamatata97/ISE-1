@@ -1,30 +1,31 @@
 package com.sun.ise.ui.login
 
 import androidx.lifecycle.ViewModel
-import com.sun.ise.data.model.LoginResult
+import com.sun.ise.data.remote.LoginAsync
 import com.sun.ise.data.repository.UserRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.sun.ise.ui.common.LoginCallback
+import com.sun.ise.util.Constants
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel(
+    private val callback: LoginCallback,
+    private val userRepository: UserRepository
+) :
+    ViewModel() {
 
-    fun login(email: String, password: String): String {
-        var code = "500"
-        userRepository.login(email, password).enqueue(
-            object : Callback<LoginResult> {
-                override fun onResponse(call: Call<LoginResult>, response: Response<LoginResult>) {
-                    val result = response.body()
-                    code = result!!.code
-                    userRepository.saveToken(result.token)
-                    val user = result.user
-                    userRepository.saveCurrentUser(user)
-                }
-
-                override fun onFailure(call: Call<LoginResult>, t: Throwable) {
-                    code = "500"
-                }
-            })
-        return code
+    fun login(email: String, password: String) {
+        val loginAsync = LoginAsync(userRepository)
+        loginAsync.execute(userRepository.login(email, password))
+        val loginResult = loginAsync.get()
+        when (loginResult!!.code) {
+            Constants.CODE_OK -> {
+                callback.onSuccess()
+            }
+            Constants.CODE_NOT_FOUND -> {
+                callback.onInvalidEmailOrPassword()
+            }
+            Constants.CODE_SERVER_ERROR -> {
+                callback.onError(Exception())
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.sun.ise.ui.main.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.sun.ise.R
 import com.sun.ise.data.local.LocalDataSource
-import com.sun.ise.data.model.User
+import com.sun.ise.data.model.UserWrapper
 import com.sun.ise.data.remote.RemoteDataSource
 import com.sun.ise.data.remote.RetrofitService
 import com.sun.ise.data.repository.UserRepository
+import com.sun.ise.ui.login.LoginActivity
 import com.sun.ise.util.StringUtils
 import com.sun.ise.util.ViewModelUtil
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -39,13 +41,23 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val user = viewModel.getCurrentUser()
         if (user != null) bindData(user)
+        buttonLogout.setOnClickListener {
+            viewModel.logout()
+            LoginActivity.getIntent(context!!).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(this)
+            }
+        }
     }
 
-    private fun bindData(user: User) {
+    private fun bindData(userWrapper: UserWrapper) {
+        val user = userWrapper.user
         textName.text = user.name
         textAccountType.text = user.type
         textRollNumber.text = user.code
-        textMajor.text = user.majorId.toString()
+        textMajor.text = userWrapper.major.name
         textDateOfBirth.text = StringUtils.simplifyDate(user.dateOfBirth)
         textGender.text = user.getGender(activity!!)
         textEmail.text = user.email

@@ -10,3 +10,10 @@ data class Major(
     @SerializedName("acronym")
     val acronym: String
 )
+
+data class MajorResult(
+    @SerializedName("code")
+    val code: String,
+    @SerializedName("result")
+    val major: Major
+)

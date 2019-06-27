@@ -19,4 +19,8 @@ class SharePrefs(context: Context) {
     var user: String?
         get() = prefs.getString(PREFS_CURRENT_USER, "")
         set(value) = prefs.edit().putString(PREFS_CURRENT_USER, value).apply()
+
+    fun clear() {
+        prefs.edit().clear().apply()
+    }
 }
