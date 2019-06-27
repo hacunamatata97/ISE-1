@@ -27,4 +27,5 @@
     <string name="action_my_courses">My Courses</string>
     <string name="action_profile">Profile</string>
     <string name="button_enroll">Enroll</string>
+    <string name="button_logout">Logout</string>
 </resources>

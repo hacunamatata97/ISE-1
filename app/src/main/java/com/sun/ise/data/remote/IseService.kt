@@ -2,11 +2,9 @@ package com.sun.ise.data.remote
 
 import com.sun.ise.data.model.EventResult
 import com.sun.ise.data.model.LoginResult
+import com.sun.ise.data.model.MajorResult
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface IseService {
 
@@ -18,4 +16,7 @@ interface IseService {
 
     @GET("/api/events")
     fun searchEvent(@Query("q") name: String): Call<EventResult>
+
+    @GET("/api/major/{majorId}")
+    fun getMajorById(@Path("majorId") majorId: Int): Call<MajorResult>
 }

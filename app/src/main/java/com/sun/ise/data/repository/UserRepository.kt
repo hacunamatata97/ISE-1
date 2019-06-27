@@ -2,7 +2,9 @@ package com.sun.ise.data.repository
 
 import com.sun.ise.data.UserDataSource
 import com.sun.ise.data.model.LoginResult
+import com.sun.ise.data.model.MajorResult
 import com.sun.ise.data.model.User
+import com.sun.ise.data.model.UserWrapper
 import retrofit2.Call
 
 class UserRepository(
@@ -16,12 +18,17 @@ class UserRepository(
         localDataSource.saveToken(token)
     }
 
-    override fun getCurrentUser(): User = localDataSource.getCurrentUser()
+    override fun getCurrentUser(): UserWrapper = localDataSource.getCurrentUser()
 
-    override fun saveCurrentUser(user: User) {
-        localDataSource.saveCurrentUser(user)
+    override fun saveCurrentUser(userWrapper: UserWrapper) {
+        localDataSource.saveCurrentUser(userWrapper)
     }
 
     override fun login(email: String, password: String): Call<LoginResult> =
         remoteDataSource.login(email, password)
+
+    override fun logout() = localDataSource.logout()
+
+    override fun getMajorById(majorId: Int): Call<MajorResult> =
+        remoteDataSource.getMajorById(majorId)
 }

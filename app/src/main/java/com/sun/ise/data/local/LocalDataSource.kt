@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.sun.ise.data.UserDataSource
 import com.sun.ise.data.model.User
+import com.sun.ise.data.model.UserWrapper
 import com.sun.ise.util.SharePrefs
 
 class LocalDataSource private constructor(context: Context) : UserDataSource.LocalUser {
@@ -16,15 +17,17 @@ class LocalDataSource private constructor(context: Context) : UserDataSource.Loc
         prefs.token = token
     }
 
-    override fun getCurrentUser(): User {
+    override fun getCurrentUser(): UserWrapper {
         val userJson = prefs.user
-        return Gson().fromJson(userJson, User::class.java)
+        return Gson().fromJson(userJson, UserWrapper::class.java)
     }
 
-    override fun saveCurrentUser(user: User) {
-        val json = Gson().toJson(user)
+    override fun saveCurrentUser(userWrapper: UserWrapper) {
+        val json = Gson().toJson(userWrapper)
         prefs.user = json
     }
+
+    override fun logout() = prefs.clear()
 
     companion object {
         private var INSTANCE: LocalDataSource? = null

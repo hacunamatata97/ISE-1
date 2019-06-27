@@ -2,9 +2,8 @@ package com.sun.ise.ui.main
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.sun.ise.R
 import com.sun.ise.ui.common.ViewPagerAdapter
@@ -21,16 +20,12 @@ const val PROFILE_INDEX = 3
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var prevMenuItem: MenuItem
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState == null) {
-            bottomNavigationView.selectedItemId = R.id.action_home
-        }
         setupBottomNavigation()
         setupViewPager()
+        bottomNavigationView.selectedItemId = R.id.action_home
     }
 
     private fun setupBottomNavigation() {
@@ -43,16 +38,12 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-
-        prevMenuItem = bottomNavigationView.menu.getItem(0)
     }
 
     private fun setupViewPager() {
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageSelected(position: Int) {
-                prevMenuItem.isChecked = false
                 bottomNavigationView.menu.getItem(position).isChecked = true
-                prevMenuItem = bottomNavigationView.menu.getItem(position)
             }
 
             override fun onPageScrolled(
