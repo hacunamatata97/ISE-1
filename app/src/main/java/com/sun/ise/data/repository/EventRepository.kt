@@ -12,12 +12,15 @@ class EventRepository(
 ) :
     UserDataSource.Local, EventDataSource.Remote {
 
-    override fun getAllEvents(accessToken: String): Call<EventResult> =
-        remoteDataSource.getAllEvents(accessToken)
-
     override fun getToken(): String = localDataSource.getToken()
 
     override fun saveToken(token: String) {
         saveToken(token)
     }
+
+    override fun getAllEvents(): Call<EventResult> =
+        remoteDataSource.getAllEvents()
+
+    override fun searchEvent(searchText: String): Call<EventResult> =
+        remoteDataSource.searchEvent(searchText)
 }

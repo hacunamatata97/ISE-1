@@ -11,7 +11,7 @@ class HomeViewModel(private val repository: EventRepository) : ViewModel() {
 
     fun getAllEvents(): LiveData<List<Event>> {
         val networkCallAsync = NetworkCallAsync()
-        networkCallAsync.execute(repository.getAllEvents(repository.getToken()))
+        networkCallAsync.execute(repository.getAllEvents())
         val eventResult = networkCallAsync.get()
         val liveData = MutableLiveData<List<Event>>()
         liveData.value = eventResult.result

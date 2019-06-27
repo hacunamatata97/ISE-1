@@ -1,5 +1,6 @@
 package com.sun.ise.ui.login
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.sun.ise.data.model.LoginResult
 import com.sun.ise.data.repository.UserRepository

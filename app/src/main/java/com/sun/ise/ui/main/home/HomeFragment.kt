@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.home_fragment.*
 class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
 
     private val iseService: IseService by lazy {
-        RetrofitService.getService()
+        RetrofitService.getInstance(activity!!.application).getService()
     }
     private val viewModel: HomeViewModel by lazy {
         ViewModelProviders.of(this, ViewModelUtil.viewModelFactory {

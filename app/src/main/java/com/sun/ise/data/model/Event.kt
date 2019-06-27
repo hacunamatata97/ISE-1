@@ -1,6 +1,10 @@
 package com.sun.ise.data.model
 
+import android.os.Parcel
+import android.os.Parcelable
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class Event(
     @SerializedName("id")
@@ -35,3 +39,11 @@ data class EventResult(
     @SerializedName("result")
     val result: ArrayList<Event>
 )
+
+@Parcelize
+data class EventSuggestion(
+    private val id: Int = 0,
+    private val name: String
+) : SearchSuggestion {
+    override fun getBody(): String = name
+}
