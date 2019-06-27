@@ -18,6 +18,8 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
                     val result = response.body()
                     code = result!!.code
                     repository.saveToken(result.token)
+                    val user = result.user
+                    repository.saveCurrentUser(user)
                 }
 
                 override fun onFailure(call: Call<LoginResult>, t: Throwable) {

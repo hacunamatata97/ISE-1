@@ -4,6 +4,7 @@ import com.sun.ise.data.EventDataSource
 import com.sun.ise.data.UserDataSource
 import com.sun.ise.data.model.Event
 import com.sun.ise.data.model.EventResult
+import com.sun.ise.data.model.User
 import retrofit2.Call
 
 class EventRepository(

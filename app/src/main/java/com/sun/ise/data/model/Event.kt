@@ -1,7 +1,5 @@
 package com.sun.ise.data.model
 
-import android.os.Parcel
-import android.os.Parcelable
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
