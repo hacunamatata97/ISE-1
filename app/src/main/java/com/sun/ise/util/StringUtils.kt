@@ -1,4 +1,6 @@
 package com.sun.ise.util
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object StringUtils {
     fun checkNotEmpty(vararg text: String): Boolean {
@@ -6,5 +8,18 @@ object StringUtils {
             if (it.isBlank()) return false
         }
         return true
+    }
+
+    fun formatTimeRange(startDate: String, endDate: String): String =
+        "${simplifyDate(startDate)}\n-\n${simplifyDate(endDate)}"
+
+    fun formatJoinedPeople(joinedParticipants: Int, maxParticipants: Int): String =
+        "$joinedParticipants/$maxParticipants"
+
+    private fun simplifyDate(date: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        val formattedDate = inputFormat.parse(date)
+        val formatter = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
+        return formatter.format(formattedDate)
     }
 }

@@ -23,7 +23,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
-                android:id="@+id/imageCourseThumbnail"
+                android:id="@+id/imageThumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
@@ -52,7 +52,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textCourseTitle"
+                android:id="@+id/textTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -60,48 +60,48 @@
                 android:text="@string/sample_title"
                 android:textAlignment="center"
                 android:textSize="@dimen/sp_25"
-                app:layout_constraintBottom_toTopOf="@id/textCourseLeader"
+                app:layout_constraintBottom_toTopOf="@id/textLeader"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="spread"/>
 
             <TextView
-                android:id="@+id/textCourseLeader"
+                android:id="@+id/textLeader"
                 style="@style/DetailDrawableText"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/ic_account_type"
                 android:text="@string/sample_name"
-                app:layout_constraintBaseline_toBaselineOf="@id/textCoursePartner"
+                app:layout_constraintBaseline_toBaselineOf="@id/textPartner"
                 app:layout_constraintBottom_toTopOf="@id/detailViewPager"
-                app:layout_constraintEnd_toStartOf="@id/textCoursePartner"
+                app:layout_constraintEnd_toStartOf="@id/textPartner"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textCourseTitle"/>
+                app:layout_constraintTop_toBottomOf="@id/textTitle"/>
 
             <TextView
-                android:id="@+id/textCoursePartner"
+                android:id="@+id/textPartner"
                 style="@style/DetailDrawableText"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/ic_roll_number"
                 app:layout_constraintBottom_toTopOf="@id/detailViewPager"
-                app:layout_constraintEnd_toStartOf="@id/textCourseMajor"
-                app:layout_constraintStart_toEndOf="@id/textCourseLeader"
-                app:layout_constraintTop_toBottomOf="@id/textCourseTitle"/>
+                app:layout_constraintEnd_toStartOf="@id/textMajor"
+                app:layout_constraintStart_toEndOf="@id/textLeader"
+                app:layout_constraintTop_toBottomOf="@id/textTitle"/>
 
             <TextView
-                android:id="@+id/textCourseMajor"
+                android:id="@+id/textMajor"
                 style="@style/DetailDrawableText"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/ic_roll_number"
-                app:layout_constraintBaseline_toBaselineOf="@id/textCoursePartner"
+                app:layout_constraintBaseline_toBaselineOf="@id/textPartner"
                 app:layout_constraintBottom_toTopOf="@id/detailViewPager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/textCoursePartner"
-                app:layout_constraintTop_toBottomOf="@id/textCourseTitle"/>
+                app:layout_constraintStart_toEndOf="@id/textPartner"
+                app:layout_constraintTop_toBottomOf="@id/textTitle"/>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/detailViewPager"
@@ -112,7 +112,7 @@
                 app:layout_constraintBottom_toTopOf="@id/buttonEnroll"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textCoursePartner">
+                app:layout_constraintTop_toBottomOf="@id/textPartner">
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"

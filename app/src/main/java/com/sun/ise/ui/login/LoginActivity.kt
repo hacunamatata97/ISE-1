@@ -1,7 +1,5 @@
 package com.sun.ise.ui.login
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -9,10 +7,12 @@ import com.sun.ise.R
 import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.remote.RemoteDataSource
 import com.sun.ise.data.remote.RetrofitService
-import com.sun.ise.data.remote.IseService
 import com.sun.ise.data.repository.UserRepository
 import com.sun.ise.ui.main.MainActivity
-import com.sun.ise.util.*
+import com.sun.ise.util.Algorithm
+import com.sun.ise.util.SharePrefs
+import com.sun.ise.util.StringUtils
+import com.sun.ise.util.ViewModelUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -41,7 +41,9 @@ class LoginActivity : AppCompatActivity() {
         val prefs = SharePrefs(application)
         val token = prefs.token
         if (!token.isNullOrBlank()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            MainActivity.getIntent(this).apply {
+                startActivity(this)
+            }
             finish()
         }
 
@@ -50,7 +52,9 @@ class LoginActivity : AppCompatActivity() {
             val password = editPassword.text.toString()
             if (StringUtils.checkNotEmpty(email, password)) {
                 loginViewModel.login(email, Algorithm.md5(password))
-                startActivity(Intent(this, MainActivity::class.java))
+                MainActivity.getIntent(this).apply {
+                    startActivity(this)
+                }
                 finish()
             }
         }
