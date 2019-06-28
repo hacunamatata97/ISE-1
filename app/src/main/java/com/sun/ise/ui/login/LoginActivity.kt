@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private val retrofit by lazy {
-        RetrofitService.getService()
+        RetrofitService.getInstance(application).getService()
     }
     private val loginViewModel: LoginViewModel by lazy {
         ViewModelProviders.of(

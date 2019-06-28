@@ -5,6 +5,8 @@ import retrofit2.Call
 
 interface EventDataSource {
     interface Remote {
-        fun getAllEvents(accessToken: String): Call<EventResult>
+        fun getAllEvents(): Call<EventResult>
+
+        fun searchEvent(searchText: String): Call<EventResult>
     }
 }
