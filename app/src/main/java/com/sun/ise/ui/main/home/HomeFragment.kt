@@ -10,16 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sun.ise.R
+import com.sun.ise.data.model.Event
 import com.sun.ise.data.remote.EventRemoteDataSource
 import com.sun.ise.data.remote.IseService
 import com.sun.ise.data.remote.RetrofitService
 import com.sun.ise.data.repository.EventRepository
 import com.sun.ise.ui.base.BaseFragment
 import com.sun.ise.ui.common.EventAdapter
+import com.sun.ise.ui.common.OnItemClickListener
+import com.sun.ise.ui.detail.DetailActivity
+import com.sun.ise.util.Constants
 import com.sun.ise.util.ViewModelUtil
 import kotlinx.android.synthetic.main.home_fragment.*
 
-class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
+class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener, OnItemClickListener {
 
     private val iseService: IseService by lazy {
         RetrofitService.getInstance(activity!!.application).getService()
@@ -44,7 +48,7 @@ class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // TODO: Use the ViewModel
-        val adapter = EventAdapter(activity!!)
+        val adapter = EventAdapter(activity!!, this)
         val events = viewModel.getAllEvents()
         events.observe(
             viewLifecycleOwner,
@@ -68,5 +72,13 @@ class HomeFragment : BaseFragment(), Toolbar.OnMenuItemClickListener {
             R.id.action_finished -> toolbar.setTitle(R.string.action_finished)
         }
         return false
+    }
+
+    override fun onItemClick(event: Event) {
+        DetailActivity.getIntent(activity!!).apply {
+            putExtra(DetailActivity.INTENT_FRAGMENT_ID, Constants.FRAGMENT_HOME_ID)
+            putExtra(DetailActivity.INTENT_DETAIL_EVENT, event)
+            startActivity(this)
+        }
     }
 }

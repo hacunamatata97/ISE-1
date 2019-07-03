@@ -1,9 +1,11 @@
 package com.sun.ise.data.model
 
+import android.os.Parcelable
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Event(
     @SerializedName("id")
     val id: Int,
@@ -29,7 +31,7 @@ data class Event(
     val semester: String,
     @SerializedName("partner_id")
     val partnerId: Int
-)
+) : Parcelable
 
 data class EventResult(
     @SerializedName("code")
