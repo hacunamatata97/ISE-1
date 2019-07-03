@@ -13,6 +13,7 @@ import com.sun.ise.data.model.UserWrapper
 import com.sun.ise.data.remote.RemoteDataSource
 import com.sun.ise.data.remote.RetrofitService
 import com.sun.ise.data.repository.UserRepository
+import com.sun.ise.ui.common.MaterialDialog
 import com.sun.ise.ui.login.LoginActivity
 import com.sun.ise.util.StringUtils
 import com.sun.ise.util.ViewModelUtil
@@ -42,14 +43,30 @@ class ProfileFragment : Fragment() {
         val user = viewModel.getCurrentUser()
         if (user != null) bindData(user)
         buttonLogout.setOnClickListener {
-            viewModel.logout()
-            LoginActivity.getIntent(context!!).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(this)
-            }
+            showConfirmDialog()
         }
+    }
+
+    private fun showConfirmDialog() {
+        val dialog = MaterialDialog(activity!!)
+        dialog.apply {
+            setMessage(R.string.confirm_message)
+            setPositiveButton(R.string.confirm_positive_button, View.OnClickListener {
+                viewModel.logout()
+                LoginActivity.getIntent(activity!!).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(this)
+                }
+                activity!!.finish()
+                this.dismiss()
+            })
+            setNegativeButton(R.string.confirm_negative_button, View.OnClickListener {
+                this.dismiss()
+            })
+        }
+        dialog.show()
     }
 
     private fun bindData(userWrapper: UserWrapper) {
