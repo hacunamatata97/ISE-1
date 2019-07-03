@@ -1,7 +1,6 @@
 package com.sun.ise.ui.common
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,10 @@ import com.sun.ise.data.model.Event
 import com.sun.ise.util.StringUtils
 import kotlinx.android.synthetic.main.item_course.view.*
 
-class EventAdapter constructor(context: Context) :
+class EventAdapter constructor(
+    context: Context,
+    private val itemClickListener: OnItemClickListener
+) :
     RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     private val inflater: LayoutInflater by lazy {
@@ -36,8 +38,8 @@ class EventAdapter constructor(context: Context) :
         notifyDataSetChanged()
     }
 
-    class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+    inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         fun bindData(event: Event) {
             itemView.textCourseTitle.text = event.name
             itemView.textCourseDate.text =
@@ -45,6 +47,13 @@ class EventAdapter constructor(context: Context) :
             itemView.textCourseMajor.text = event.semester
             itemView.textJoinedPeople.text =
                 StringUtils.formatJoinedPeople(event.joinedParticipants, event.maxParticipants)
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = layoutPosition
+            val event = events[position]
+            itemClickListener.onItemClick(event)
         }
     }
 }
