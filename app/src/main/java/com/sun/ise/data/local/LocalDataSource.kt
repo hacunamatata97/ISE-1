@@ -1,8 +1,9 @@
 package com.sun.ise.data.local
 
 import android.content.Context
-import android.util.Log
+import com.google.gson.Gson
 import com.sun.ise.data.UserDataSource
+import com.sun.ise.data.model.User
 import com.sun.ise.util.SharePrefs
 
 class LocalDataSource private constructor(context: Context) : UserDataSource.Local {
@@ -13,6 +14,17 @@ class LocalDataSource private constructor(context: Context) : UserDataSource.Loc
 
     override fun saveToken(token: String) {
         prefs.token = token
+    }
+
+    override fun getCurrentUser(): User? {
+        val userJson = prefs.user
+        return if (userJson.isNullOrEmpty()) null
+        else Gson().fromJson(userJson, User::class.java)
+    }
+
+    override fun saveCurrentUser(user: User) {
+        val json = Gson().toJson(user)
+        prefs.user = json
     }
 
     companion object {
