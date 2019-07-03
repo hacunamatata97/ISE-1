@@ -36,4 +36,7 @@
     <string name="toast_login_failed">Wrong email or password!</string>
     <string name="toast_empty_email">Please enter email!</string>
     <string name="toast_empty_password">Please enter password!</string>
+    <string name="confirm_message">Are you sure to logout?</string>
+    <string name="confirm_positive_button">Confirm</string>
+    <string name="confirm_negative_button">Cancel</string>
 </resources>
