@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
-import com.google.android.material.appbar.AppBarLayout
 import com.sun.ise.R
 import com.sun.ise.data.model.Event
 import com.sun.ise.ui.common.ViewPagerAdapter
@@ -17,37 +17,52 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
+    private lateinit var event: Event
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        setupAppBar()
-        setupTabLayout()
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = null
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
         when (intent.getIntExtra(INTENT_FRAGMENT_ID, 0)) {
             Constants.FRAGMENT_HOME_ID -> {
-                val event = intent.getParcelableExtra<Event>(INTENT_DETAIL_EVENT)
+                event = intent.getParcelableExtra(INTENT_DETAIL_EVENT)
             }
             Constants.FRAGMENT_SEARCH_ID -> {
-                val event = intent.getParcelableExtra<SearchSuggestion>(INTENT_DETAIL_EVENT)
+                val searchResult = intent.getParcelableExtra<SearchSuggestion>(INTENT_DETAIL_EVENT)
             }
             Constants.FRAGMENT_MY_COURSES_ID -> {
             }
         }
+        setData()
+        setupTabLayout()
     }
 
-    private fun setupAppBar() {
-        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-            if (verticalOffset == 0) {
-                collapsingToolbar.title = " "
-            } else {
-                collapsingToolbar.title = resources.getString(R.string.sample_title)
-            }
-        })
+    private fun setData() {
+        textTitle.text = event.name
+        textPartner.text = event.partnerId.toString()
+        textMajor.text = event.status.toString()
     }
 
     private fun setupTabLayout() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(DescriptionFragment(), FeatureFragment(), RequirementFragment())
+        adapter.addFragment(*setupFragmentsData())
+        adapter.addTabTitles(
+            getString(R.string.detail_description),
+            getString(R.string.detail_features),
+            getString(R.string.detail_requirement)
+        )
         detailViewPager.adapter = adapter
+    }
+
+    private fun setupFragmentsData(): Array<Fragment> {
+        val fragments = arrayOf(DescriptionFragment(), FeatureFragment(), RequirementFragment())
+        val bundle = Bundle()
+        bundle.putParcelable(INTENT_DETAIL_EVENT, event)
+        fragments.forEach { it.arguments = bundle }
+        return fragments
     }
 
     companion object {

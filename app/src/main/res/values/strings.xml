@@ -39,4 +39,7 @@
     <string name="confirm_message">Are you sure to logout?</string>
     <string name="confirm_positive_button">Confirm</string>
     <string name="confirm_negative_button">Cancel</string>
+    <string name="detail_description">Description</string>
+    <string name="detail_features">Features</string>
+    <string name="detail_requirement">Requirement</string>
 </resources>

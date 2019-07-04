@@ -46,6 +46,7 @@
 
     <style name="DetailDrawableText">
         <item name="android:background">@drawable/bg_text_border</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/sp_15</item>
         <item name="android:fontFamily">@font/montserrat</item>
