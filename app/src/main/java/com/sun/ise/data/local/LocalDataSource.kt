@@ -2,7 +2,7 @@ package com.sun.ise.data.local
 
 import android.content.Context
 import com.google.gson.Gson
-import com.sun.ise.data.UserDataSource
+import com.sun.ise.data.datasource.UserDataSource
 import com.sun.ise.data.model.UserWrapper
 import com.sun.ise.util.SharePrefs
 

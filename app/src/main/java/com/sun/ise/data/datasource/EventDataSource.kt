@@ -1,4 +1,4 @@
-package com.sun.ise.data
+package com.sun.ise.data.datasource
 
 import com.sun.ise.data.model.EventResult
 import retrofit2.Call
@@ -8,5 +8,7 @@ interface EventDataSource {
         fun getAllEvents(): Call<EventResult>
 
         fun searchEvent(searchText: String): Call<EventResult>
+
+        fun getEventById(eventId: Int): Call<EventResult>
     }
 }

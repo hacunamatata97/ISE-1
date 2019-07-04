@@ -1,4 +1,4 @@
-package com.sun.ise.data
+package com.sun.ise.data.datasource
 
 import com.sun.ise.data.model.LoginResult
 import com.sun.ise.data.model.MajorResult
