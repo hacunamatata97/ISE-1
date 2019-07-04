@@ -45,6 +45,9 @@ dependencies {
     // Custom ImageView
     implementation 'com.github.siyamed:android-shape-imageview:0.9.3'
 
+    // ExpandableTextView
+    implementation 'at.blogc:expandabletextview:1.0.5'
+
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
