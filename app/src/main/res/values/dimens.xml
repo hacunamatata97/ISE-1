@@ -21,4 +21,5 @@
     <dimen name="dp_3">3dp</dimen>
     <dimen name="sp_13">13sp</dimen>
     <dimen name="sp_20">20sp</dimen>
+    <dimen name="dp_48">48dp</dimen>
 </resources>

@@ -1,9 +1,6 @@
 package com.sun.ise.data.remote
 
-import com.sun.ise.data.model.EventResult
-import com.sun.ise.data.model.LoginResult
-import com.sun.ise.data.model.MajorResult
-import com.sun.ise.data.model.PartnerResult
+import com.sun.ise.data.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -29,4 +26,6 @@ interface IseService {
 
     @GET("/api/event/{eventId}/major")
     fun getMajorByEvent(@Path("eventId") eventId: Int): Call<MajorResult>
+    @GET("api/event/{eventId}/requirements")
+    fun getRequirementsByEvent(@Path("eventId") eventId: Int): Call<RequirementResult>
 }
