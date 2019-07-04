@@ -30,7 +30,7 @@ data class User(
     fun getGender(context: Context): String = when (gender) {
         MALE -> context.resources.getString(R.string.gender_male)
         FE_MALE -> context.resources.getString(R.string.gender_female)
-        else -> context.resources.getString(R.string.gender_unknown)
+        else -> context.resources.getString(R.string.unknown)
     }
 }
 

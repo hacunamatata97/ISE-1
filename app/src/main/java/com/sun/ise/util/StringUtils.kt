@@ -1,4 +1,6 @@
 package com.sun.ise.util
+
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -11,8 +13,14 @@ object StringUtils {
         return true
     }
 
-    fun formatTimeRange(startDate: String, endDate: String): String =
-        "${simplifyDate(startDate)}\n-\n${simplifyDate(endDate)}"
+    fun formatPrice(price: Float): String {
+        val format = DecimalFormat("#,###")
+        return String.format("%s VND", format.format(price))
+    }
+
+    fun formatTimeRange(startDate: String, endDate: String, multiLine: Boolean): String =
+        if (multiLine) "${simplifyDate(startDate)}\n-\n${simplifyDate(endDate)}"
+        else "${simplifyDate(startDate)} - ${simplifyDate(endDate)}"
 
     fun formatJoinedPeople(joinedParticipants: Int, maxParticipants: Int): String =
         "$joinedParticipants/$maxParticipants"

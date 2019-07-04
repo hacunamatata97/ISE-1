@@ -1,7 +1,10 @@
 package com.sun.ise.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Partner(
     @SerializedName("id")
     val id: Int,
@@ -13,7 +16,7 @@ data class Partner(
     val country: String,
     @SerializedName("signed")
     val signed: Int
-)
+): Parcelable
 
 data class PartnerResult(
     @SerializedName("code")

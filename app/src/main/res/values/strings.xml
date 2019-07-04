@@ -30,7 +30,7 @@
 
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
-    <string name="gender_unknown">Unknown</string>
+    <string name="unknown">Unknown</string>
     <string name="button_logout">Logout</string>
     <string name="toast_server_error">Something is wrong, please try again!</string>
     <string name="toast_login_failed">Wrong email or password!</string>
@@ -47,4 +47,7 @@
     <string name="label_country">Country</string>
     <string name="label_number_of_participants">Number of participants</string>
     <string name="label_status">Status</string>
+    <string name="status_on_going">On-going</string>
+    <string name="status_finished">FINISHED</string>
+    <string name="label_course_price">Course price</string>
 </resources>

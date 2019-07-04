@@ -2,8 +2,8 @@ package com.sun.ise.ui.detail
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -70,6 +70,10 @@ class DetailActivity : AppCompatActivity() {
         }
         partner = viewModel.getPartnerById(event.partnerId)
         major = viewModel.getMajorByEvent(event.id)
+        if (event.getStatus(this) == getString(R.string.status_finished)) {
+            buttonEnroll.isEnabled = false
+            buttonEnroll.background = getDrawable(R.drawable.bg_disable_button)
+        }
         setupToolbar()
         setData()
         setupTabLayout()
@@ -79,6 +83,10 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.navigationIcon?.setColorFilter(
+            getColor(android.R.color.white),
+            PorterDuff.Mode.SRC_ATOP
+        )
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
@@ -103,6 +111,7 @@ class DetailActivity : AppCompatActivity() {
         val fragments = arrayOf(DescriptionFragment(), FeatureFragment(), RequirementFragment())
         val bundle = Bundle()
         bundle.putParcelable(INTENT_DETAIL_EVENT, event)
+        bundle.putParcelable(BUNDLE_DETAIL_PARTNER, partner)
         fragments.forEach { it.arguments = bundle }
         return fragments
     }
@@ -110,6 +119,7 @@ class DetailActivity : AppCompatActivity() {
     companion object {
         const val INTENT_FRAGMENT_ID = "FRAGMENT_ID"
         const val INTENT_DETAIL_EVENT = "DETAIL_EVENT"
+        const val BUNDLE_DETAIL_PARTNER = "DETAIL_PARTNER"
         fun getIntent(context: Context) = Intent(context, DetailActivity::class.java)
     }
 }

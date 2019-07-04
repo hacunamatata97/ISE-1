@@ -46,4 +46,9 @@
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
+    <style name="FeatureText">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
 </resources>

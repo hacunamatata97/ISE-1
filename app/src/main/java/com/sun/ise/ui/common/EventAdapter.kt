@@ -43,7 +43,7 @@ class EventAdapter constructor(
         fun bindData(event: Event) {
             itemView.textCourseTitle.text = event.name
             itemView.textCourseDate.text =
-                StringUtils.formatTimeRange(event.startDate, event.endDate)
+                StringUtils.formatTimeRange(event.startDate, event.endDate, true)
             itemView.textCourseMajor.text = event.semester
             itemView.textJoinedPeople.text =
                 StringUtils.formatJoinedPeople(event.joinedParticipants, event.maxParticipants)

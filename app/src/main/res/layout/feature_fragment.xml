@@ -13,6 +13,17 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/labelPrice"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_price"
+            android:text="@string/label_course_price"
+            app:layout_constraintBottom_toTopOf="@id/labelDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
             android:id="@+id/labelDate"
             style="@style/DetailDrawableText"
             android:layout_width="wrap_content"
@@ -22,7 +33,7 @@
             android:text="@string/label_date"
             app:layout_constraintBottom_toTopOf="@id/labelSemester"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelPrice"
             app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
@@ -74,59 +85,70 @@
             app:layout_constraintTop_toBottomOf="@id/labelNumberOfParticipants"/>
 
         <TextView
+            android:id="@+id/textFeaturePrice"
+            style="@style/FeatureText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelPrice"
+            app:layout_constraintBottom_toTopOf="@id/textFeatureDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
             android:id="@+id/textFeatureDate"
+            style="@style/FeatureText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
             app:layout_constraintBaseline_toBaselineOf="@id/labelDate"
             app:layout_constraintBottom_toTopOf="@id/textFeatureSemester"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="25 May 2019"/>
+            app:layout_constraintTop_toBottomOf="@id/textFeaturePrice"/>
 
         <TextView
             android:id="@+id/textFeatureSemester"
+            style="@style/FeatureText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
             app:layout_constraintBaseline_toBaselineOf="@id/labelSemester"
             app:layout_constraintBottom_toTopOf="@id/textFeatureCountry"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFeatureDate"
-            tools:text="25 May 2019"/>
+            app:layout_constraintTop_toBottomOf="@id/textFeatureDate"/>
 
         <TextView
             android:id="@+id/textFeatureCountry"
+            style="@style/FeatureText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
             app:layout_constraintBaseline_toBaselineOf="@id/labelCountry"
             app:layout_constraintBottom_toTopOf="@id/textFeatureNumberOfParticipants"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFeatureSemester"
-            tools:text="25 May 2019"/>
+            app:layout_constraintTop_toBottomOf="@id/textFeatureSemester"/>
 
         <TextView
             android:id="@+id/textFeatureNumberOfParticipants"
+            style="@style/FeatureText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
             app:layout_constraintBaseline_toBaselineOf="@id/labelNumberOfParticipants"
             app:layout_constraintBottom_toTopOf="@id/textFeatureStatus"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFeatureCountry"
-            tools:text="25 May 2019"/>
+            app:layout_constraintTop_toBottomOf="@id/textFeatureCountry"/>
 
         <TextView
             android:id="@+id/textFeatureStatus"
+            style="@style/FeatureText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_10"
             app:layout_constraintBaseline_toBaselineOf="@id/labelStatus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFeatureNumberOfParticipants"
-            tools:text="25 May 2019"/>
+            app:layout_constraintTop_toBottomOf="@id/textFeatureNumberOfParticipants"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
