@@ -3,11 +3,13 @@ package com.sun.ise.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
 import com.sun.ise.R
+import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.model.Event
 import com.sun.ise.data.model.EventSuggestion
 import com.sun.ise.data.model.Major
