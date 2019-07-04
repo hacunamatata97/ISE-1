@@ -42,8 +42,8 @@ data class EventResult(
 
 @Parcelize
 data class EventSuggestion(
-    private val id: Int = 0,
-    private val name: String
+    val id: Int = 0,
+    val name: String
 ) : SearchSuggestion {
     override fun getBody(): String = name
 }

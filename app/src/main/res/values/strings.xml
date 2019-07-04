@@ -42,4 +42,9 @@
     <string name="detail_description">Description</string>
     <string name="detail_features">Features</string>
     <string name="detail_requirement">Requirement</string>
+    <string name="label_date">Date</string>
+    <string name="label_semester">Semester</string>
+    <string name="label_country">Country</string>
+    <string name="label_number_of_participants">Number of participants</string>
+    <string name="label_status">Status</string>
 </resources>

@@ -1,13 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/dp_10"
     tools:context=".ui.detail.feature.FeatureFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/labelDate"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_date"
+            android:padding="@dimen/dp_10"
+            android:text="@string/label_date"
+            app:layout_constraintBottom_toTopOf="@id/labelSemester"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/labelSemester"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_semester"
+            android:padding="@dimen/dp_10"
+            android:text="@string/label_semester"
+            app:layout_constraintBottom_toTopOf="@id/labelCountry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDate"/>
+
+        <TextView
+            android:id="@+id/labelCountry"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_country"
+            android:padding="@dimen/dp_10"
+            android:text="@string/label_country"
+            app:layout_constraintBottom_toTopOf="@id/labelNumberOfParticipants"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelSemester"/>
+
+        <TextView
+            android:id="@+id/labelNumberOfParticipants"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_people_joined"
+            android:padding="@dimen/dp_10"
+            android:text="@string/label_number_of_participants"
+            app:layout_constraintBottom_toTopOf="@id/labelStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelCountry"/>
+
+        <TextView
+            android:id="@+id/labelStatus"
+            style="@style/DetailDrawableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_status"
+            android:padding="@dimen/dp_10"
+            android:text="@string/label_status"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelNumberOfParticipants"/>
+
+        <TextView
+            android:id="@+id/textFeatureDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelDate"
+            app:layout_constraintBottom_toTopOf="@id/textFeatureSemester"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="25 May 2019"/>
+
+        <TextView
+            android:id="@+id/textFeatureSemester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelSemester"
+            app:layout_constraintBottom_toTopOf="@id/textFeatureCountry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFeatureDate"
+            tools:text="25 May 2019"/>
+
+        <TextView
+            android:id="@+id/textFeatureCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelCountry"
+            app:layout_constraintBottom_toTopOf="@id/textFeatureNumberOfParticipants"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFeatureSemester"
+            tools:text="25 May 2019"/>
+
+        <TextView
+            android:id="@+id/textFeatureNumberOfParticipants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelNumberOfParticipants"
+            app:layout_constraintBottom_toTopOf="@id/textFeatureStatus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFeatureCountry"
+            tools:text="25 May 2019"/>
+
+        <TextView
+            android:id="@+id/textFeatureStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBaseline_toBaselineOf="@id/labelStatus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFeatureNumberOfParticipants"
+            tools:text="25 May 2019"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
