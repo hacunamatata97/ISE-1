@@ -9,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
 
 const val STATUS_ON_GOING = 1
 const val STATUS_FINISHED = 3
+
 @Parcelize
 data class Event(
     @SerializedName("id")
@@ -36,7 +37,7 @@ data class Event(
     @SerializedName("partner_id")
     val partnerId: Int
 ) : Parcelable {
-    fun getStatus(context: Context): String = when(status) {
+    fun getStatus(context: Context): String = when (status) {
         STATUS_ON_GOING -> context.getString(R.string.status_on_going)
         STATUS_FINISHED -> context.getString(R.string.status_finished)
         else -> context.getString(R.string.unknown)
@@ -57,3 +58,17 @@ data class EventSuggestion(
 ) : SearchSuggestion {
     override fun getBody(): String = name
 }
+
+data class EnrollEvent(
+    @SerializedName("event")
+    val event: Event,
+    @SerializedName("enroll_status")
+    val enrollStatus: Int
+)
+
+data class EnrollEventResult(
+    @SerializedName("code")
+    val code: String,
+    @SerializedName("result")
+    val result: List<EnrollEvent>
+)

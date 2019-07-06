@@ -41,7 +41,8 @@ class RequirementAdapter(context: Context) :
         notifyDataSetChanged()
     }
 
-    inner class RequirementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class RequirementViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         fun bindData(requirement: Requirement, position: Int) {
             setIsRecyclable(false)
@@ -65,7 +66,13 @@ class RequirementAdapter(context: Context) :
                 })
             }
             itemView.viewExpand.rotation = if (expandState.get(position)) 180f else 0f
-            itemView.viewExpand.setOnClickListener { itemView.expandableLayout.toggle() }
+            itemView.viewExpand.setOnClickListener(this)
+            itemView.textRequirementName.setOnClickListener(this)
+            itemView.textRequirementDeadline.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            itemView.expandableLayout.toggle()
         }
 
         private fun createRotateAnimator(target: View, from: Float, to: Float): ObjectAnimator {

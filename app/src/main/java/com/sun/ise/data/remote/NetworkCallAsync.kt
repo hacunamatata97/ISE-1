@@ -1,14 +1,18 @@
 package com.sun.ise.data.remote
 
 import android.os.AsyncTask
-import com.sun.ise.data.model.EventResult
-import com.sun.ise.data.model.MajorResult
-import com.sun.ise.data.model.PartnerResult
-import com.sun.ise.data.model.RequirementResult
+import com.sun.ise.data.model.*
 import retrofit2.Call
 
 class GetEventsAsync : AsyncTask<Call<EventResult>, Void, EventResult>() {
     override fun doInBackground(vararg params: Call<EventResult>?): EventResult {
+        val response = params[0]!!.execute()
+        return response.body()!!
+    }
+}
+
+class GetEnrollEventAsync : AsyncTask<Call<EnrollEventResult>, Void, EnrollEventResult>() {
+    override fun doInBackground(vararg params: Call<EnrollEventResult>?): EnrollEventResult {
         val response = params[0]!!.execute()
         return response.body()!!
     }

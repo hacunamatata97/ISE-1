@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -14,13 +15,11 @@ import com.sun.ise.data.model.Event
 import com.sun.ise.data.model.EventSuggestion
 import com.sun.ise.data.model.Major
 import com.sun.ise.data.model.Partner
-import com.sun.ise.data.remote.EventRemoteDataSource
-import com.sun.ise.data.remote.MajorRemoteDataSource
-import com.sun.ise.data.remote.PartnerRemoteDataSource
-import com.sun.ise.data.remote.RetrofitService
+import com.sun.ise.data.remote.*
 import com.sun.ise.data.repository.EventRepository
 import com.sun.ise.data.repository.MajorRepository
 import com.sun.ise.data.repository.PartnerRepository
+import com.sun.ise.data.repository.UserRepository
 import com.sun.ise.ui.common.ViewPagerAdapter
 import com.sun.ise.ui.detail.description.DescriptionFragment
 import com.sun.ise.ui.detail.feature.FeatureFragment
@@ -45,6 +44,10 @@ class DetailActivity : AppCompatActivity() {
                 ),
                 PartnerRepository(
                     PartnerRemoteDataSource(iseService)
+                ),
+                UserRepository(
+                    LocalDataSource.getInstance(application),
+                    RemoteDataSource(iseService)
                 )
             )
         }).get(DetailViewModel::class.java)
@@ -57,15 +60,13 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         when (intent.getIntExtra(INTENT_FRAGMENT_ID, 0)) {
-            Constants.FRAGMENT_HOME_ID -> {
+            Constants.FRAGMENT_HOME_ID, Constants.FRAGMENT_MY_COURSES_ID -> {
                 event = intent.getParcelableExtra(INTENT_DETAIL_EVENT)
             }
             Constants.FRAGMENT_SEARCH_ID -> {
                 val searchResult = intent.getParcelableExtra<SearchSuggestion>(INTENT_DETAIL_EVENT)
                 val eventId = (searchResult as EventSuggestion).id
                 event = viewModel.getEventById(eventId)
-            }
-            Constants.FRAGMENT_MY_COURSES_ID -> {
             }
         }
         partner = viewModel.getPartnerById(event.partnerId)
@@ -94,6 +95,8 @@ class DetailActivity : AppCompatActivity() {
         textTitle.text = event.name
         textPartner.text = partner.name
         textMajor.text = major.name
+        if (viewModel.getCurrentUser()?.type == getString(R.string.accout_type_manager))
+            buttonEnroll.visibility = View.GONE
     }
 
     private fun setupTabLayout() {

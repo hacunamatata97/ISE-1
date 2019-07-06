@@ -26,6 +26,10 @@ interface IseService {
 
     @GET("/api/event/{eventId}/major")
     fun getMajorByEvent(@Path("eventId") eventId: Int): Call<MajorResult>
-    @GET("api/event/{eventId}/requirements")
+
+    @GET("/api/event/{eventId}/requirements")
     fun getRequirementsByEvent(@Path("eventId") eventId: Int): Call<RequirementResult>
+
+    @GET("/api/user/{userId}/enrolled-events")
+    fun getEnrollEvents(@Path("userId") userId: Int): Call<EnrollEventResult>
 }

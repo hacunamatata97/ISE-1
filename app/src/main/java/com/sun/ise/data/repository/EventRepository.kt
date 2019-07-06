@@ -1,6 +1,7 @@
 package com.sun.ise.data.repository
 
 import com.sun.ise.data.datasource.EventDataSource
+import com.sun.ise.data.model.EnrollEventResult
 import com.sun.ise.data.model.EventResult
 import retrofit2.Call
 
@@ -16,4 +17,7 @@ class EventRepository(
 
     override fun getEventById(eventId: Int): Call<EventResult> =
         remoteDataSource.getEventById(eventId)
+
+    override fun getEnrollEvents(userId: Int): Call<EnrollEventResult> =
+        remoteDataSource.getEnrollEvents(userId)
 }

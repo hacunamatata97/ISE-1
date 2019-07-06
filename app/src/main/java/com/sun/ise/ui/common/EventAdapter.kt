@@ -11,7 +11,7 @@ import com.sun.ise.util.StringUtils
 import kotlinx.android.synthetic.main.item_course.view.*
 
 class EventAdapter constructor(
-    context: Context,
+    private val context: Context,
     private val itemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
@@ -20,6 +20,7 @@ class EventAdapter constructor(
         LayoutInflater.from(context)
     }
     private var events = emptyList<Event>()
+    private var statusList = emptyList<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val itemView = inflater.inflate(R.layout.item_course, parent, false)
@@ -30,7 +31,7 @@ class EventAdapter constructor(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val current = events[position]
-        holder.bindData(current)
+        holder.bindData(context, current)
     }
 
     internal fun setEvents(events: List<Event>) {
@@ -38,9 +39,13 @@ class EventAdapter constructor(
         notifyDataSetChanged()
     }
 
+    internal fun setStatusList(statusList: List<Int>) {
+        this.statusList = statusList
+    }
+
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
-        fun bindData(event: Event) {
+        fun bindData(context: Context, event: Event) {
             itemView.textCourseTitle.text = event.name
             itemView.textCourseDate.text =
                 StringUtils.formatTimeRange(event.startDate, event.endDate, true)
@@ -48,6 +53,11 @@ class EventAdapter constructor(
             itemView.textJoinedPeople.text =
                 StringUtils.formatJoinedPeople(event.joinedParticipants, event.maxParticipants)
             itemView.setOnClickListener(this)
+            if (event.getStatus(context) == context.getString(R.string.status_finished))
+                itemView.background =
+                    context.resources.getDrawable(android.R.color.darker_gray, context.theme)
+            if (statusList.isNotEmpty())
+                itemView.isEnabled = false
         }
 
         override fun onClick(v: View?) {

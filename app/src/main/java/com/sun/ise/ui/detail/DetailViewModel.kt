@@ -4,17 +4,20 @@ import androidx.lifecycle.ViewModel
 import com.sun.ise.data.model.Event
 import com.sun.ise.data.model.Major
 import com.sun.ise.data.model.Partner
+import com.sun.ise.data.model.User
 import com.sun.ise.data.remote.GetEventsAsync
 import com.sun.ise.data.remote.GetMajorAsync
 import com.sun.ise.data.remote.GetPartnerAsync
 import com.sun.ise.data.repository.EventRepository
 import com.sun.ise.data.repository.MajorRepository
 import com.sun.ise.data.repository.PartnerRepository
+import com.sun.ise.data.repository.UserRepository
 
 class DetailViewModel(
     private val majorRepository: MajorRepository,
     private val eventRepository: EventRepository,
-    private val partnerRepository: PartnerRepository
+    private val partnerRepository: PartnerRepository,
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     fun getMajorByEvent(eventId: Int): Major {
@@ -36,5 +39,10 @@ class DetailViewModel(
         getPartnerAsync.execute(partnerRepository.getPartnerById(partnerId))
         val partnerResult = getPartnerAsync.get()
         return partnerResult.partner
+    }
+
+    fun getCurrentUser(): User? {
+        val userWrapper = userRepository.getCurrentUser()
+        return userWrapper?.user
     }
 }
