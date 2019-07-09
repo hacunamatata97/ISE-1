@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion
+import com.google.firebase.firestore.FirebaseFirestore
 import com.sun.ise.R
 import com.sun.ise.data.local.LocalDataSource
 import com.sun.ise.data.model.Event
@@ -78,6 +79,11 @@ class DetailActivity : AppCompatActivity() {
         setupToolbar()
         setData()
         setupTabLayout()
+        buttonEnroll.setOnClickListener {
+            val db = FirebaseFirestore.getInstance()
+            val id = db.collection("events").document()
+
+        }
     }
 
     private fun setupToolbar() {
